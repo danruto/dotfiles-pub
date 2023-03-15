@@ -1,0 +1,75 @@
+[[language]]
+name = "c-sharp"
+scope = "source.csharp"
+indent = { tab-width = 4, unit = "\t" }
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/omnisharp", args = [ "--languageserver", "--stdio" ] }
+
+[[language]]
+name = "typescript"
+# language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/typescript-language-server", args = ["--stdio"], language-id = "typescript"}
+language-server = { command = "/home/danruto/.bun/bin/typescript-language-server", args = ["--stdio"], language-id = "typescript"}
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "tsx"
+# language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/typescript-language-server", args = ["--stdio"], language-id = "typescriptreact" }
+language-server = { command = "/home/danruto/.bun/bin/typescript-language-server", args = ["--stdio"], language-id = "typescriptreact"}
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "rust"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/rust-analyzer" }
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "go"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/gopls" }
+indent = { tab-width = 4, unit = "\t" }
+
+[[language]]
+name = "gomod"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/gopls" }
+
+[[language]]
+name = "gotmpl"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/gopls" }
+
+[[language]]
+name = "javascript"
+# language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/typescript-language-server", args = ["--stdio"], language-id = "javascript" }
+language-server = { command = "/home/danruto/.bun/bin/typescript-language-server", args = ["--stdio"], language-id = "javascript"}
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "jsx"
+# language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/typescript-language-server", args = ["--stdio"], language-id = "javascript" }
+language-server = { command = "/home/danruto/.bun/bin/typescript-language-server", args = ["--stdio"], language-id = "javascript"}
+indent = { tab-width = 4, unit = "    " }
+grammar = "javascript"
+
+[[language]]
+name = "css"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/vscode-css-language-server", args = ["--stdio"] }
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "scss"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/vscode-css-language-server", args = ["--stdio"] }
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "json"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/vscode-json-language-server", args = ["--stdio"] }
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "html"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/vscode-html-language-server", args = ["--stdio"] }
+
+[[language]]
+name = "lua"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/lua-language-server", args = [] }
+
+[[language]]
+name = "python"
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/pyright-langserver" }

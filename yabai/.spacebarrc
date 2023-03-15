@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+source ~/.cache/wal/colors.sh # pywal scheme - update if needed
+
+# spacebar template colours
+CBACK=$(echo $background | sed 's/#//')
+CFORE=$(echo $foreground | sed 's/#//')
+CACTV=$(echo $color3 | sed 's/#//')
+CNORM=$(echo $color1 | sed 's/#//')
+CINSE=$(echo $foreground | sed 's/#//')
+
+# bar settings
+spacebar -m config position          top
+spacebar -m config text_font         "D2Coding:Regular:12.0"
+spacebar -m config icon_font         "JetBrainsMono Nerd Font::Regular:12.0"
+# Hyper: 0xff000000 0xffD7DAE0
+# Ayu: 0xff0F1419 0xffE6E1CF
+# spacebar -m config status_bar_background_color  0xff000000
+# spacebar -m config status_bar_foreground_color  0xffD7DAE0
+spacebar -m config background_color  0xff$CBACK
+spacebar -m config foreground_color  0xff$CFORE
+spacebar -m config space_icon_strip  一 二 三 四 五 六 七 八 九 十
+spacebar -m config power_icon_strip   
+spacebar -m config space_icon        
+spacebar -m config clock_icon        
+spacebar -m config clock_format      "%y/%m/%d %R"
+
+

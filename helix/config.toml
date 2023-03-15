@@ -1,0 +1,49 @@
+theme = "ayu_evolve"
+
+[editor]
+line-number = "relative"
+mouse = true
+auto-info = true
+true-color = true
+color-modes = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-messages = true
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+
+[keys.normal]
+"{" = ["goto_prev_paragraph", "collapse_selection"]
+"}" = ["goto_next_paragraph", "collapse_selection"]
+C-h = ["jump_view_left", "normal_mode"]
+C-l = ["jump_view_right", "normal_mode"]
+C-k = ["jump_view_up", "normal_mode"]
+C-j = ["jump_view_down", "normal_mode"]
+V = ["select_mode", "extend_to_line_bounds"]
+# y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
+# p = "paste_clipboard_after"
+# P = "paste_clipboard_before"
+esc = ["collapse_selection", "keep_primary_selection"]
+
+[keys.select]
+"{" = ["extend_to_line_bounds", "goto_prev_paragraph"]
+"}" = ["extend_to_line_bounds", "goto_next_paragraph"]
+
+[keys.insert]
+up = "move_line_up"
+down = "move_line_down"
+left = "move_char_left"
+right = "move_char_right"

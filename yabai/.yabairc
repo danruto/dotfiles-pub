@@ -1,0 +1,123 @@
+#!/usr/bin/env sh
+
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+
+# source ~/.cache/wal/colors.sh
+
+CBACK=$(echo $background | sed 's/#//')
+CFORE=$(echo $foreground | sed 's/#//')
+CACTV=$(echo $color3 | sed 's/#//')
+CNORM=$(echo $color1 | sed 's/#//')
+CINSE=$(echo $foreground | sed 's/#//')
+
+# SPACEBAR_HEIGHT=(sketchybar -m --bar height)
+# yabai -m config external_bar all:0:$SPACEBAR_HEIGHT
+# yabai -m config external_bar all:0:25
+# yabai -m config external_bar [<main|all|off>:<top_padding>:<bottom_padding>]
+#
+# Specify top and bottom padding for a potential custom bar that you may be running.
+# main: Apply the given padding only to spaces located on the main display.
+# all: Apply the given padding to all spaces regardless of their display.
+# off: Do not apply any special padding.
+yabai -m config external_bar               main:49:0
+
+# global settings
+yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          off
+yabai -m config window_placement             second_child
+yabai -m config window_topmost               off
+yabai -m config window_opacity               off
+yabai -m config window_shadow                off
+yabai -m config window_border                on
+yabai -m config window_border_width          6
+yabai -m config active_window_border_color   0xfff29718
+yabai -m config normal_window_border_color   0xffb3b1ad
+yabai -m config insert_window_border_color   0xff4d5566
+# yabai -m config active_window_border_color   0xff$CACTV
+# yabai -m config normal_window_border_color   0xff$CNORM
+# yabai -m config insert_window_border_color   0xff$CINSE
+yabai -m config active_window_opacity        1.0
+yabai -m config normal_window_opacity        0.90
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+yabai -m config mouse_modifier               fn
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+yabai -m config window_animation_duration    0.25
+
+# general space settings
+yabai -m config layout                       bsp
+yabai -m config top_padding                  8 # 46 with bar
+yabai -m config bottom_padding               2
+yabai -m config left_padding                 2 
+yabai -m config right_padding                2
+yabai -m config window_gap                   2
+
+# Label space settings
+yabai -m space 1 --label chat
+yabai -m space 2 --label web
+yabai -m space 3 --label dev
+yabai -m space 4 --label misc
+yabai -m space 5 --label misc2
+
+
+# Specific space settings
+yabai -m config --space 5 layout             stack
+yabai -m config --space 4 layout             float
+#yabai -m config --space 3
+yabai -m config --space 2 auto_balance on
+#yabai -m config --space 1
+
+# Layout windows to desktops and positions we want
+#yabai -m rule --add app="Alacritty" space=^5
+yabai -m rule --add app="Marta" space=^4
+yabai -m rule --add app="Notion" space=^4
+
+# yabai -m rule --add app="Code" space=^3
+# yabai -m rule --add app="iTerm" space=^3
+# yabai -m rule --add app="PyCharm CE" space=^3
+# yabai -m rule --add app="Rider" space=^3
+
+# yabai -m rule --add app="Google Chrome" space=^2
+# yabai -m rule --add app="Firefox" space=^2
+# yabai -m rule --add app="Safari" space=^2
+# yabai -m rule --add app="Microsoft Edge Dev" space=^2
+
+yabai -m rule --add app="Discord" space=^1
+yabai -m rule --add app="Slack" space=^1
+yabai -m rule --add app="Spark" space=^1
+yabai -m rule --add app="Home" space=^1
+
+# yabai -m rule --add app="Figma" space=^4
+
+# Floating / Static windows
+yabai -m rule --add app="Boot Camp Assistant" manage=off
+yabai -m rule --add app="Simulator" manage=off
+yabai -m rule --add app="IINA" manage=off
+yabai -m rule --add app="^1Password" manage=off
+yabai -m rule --add app="^Riot Client" manage=off
+yabai -m rule --add app="^League of Legends" manage=off
+yabai -m rule --add app="^(LuLu|Vimac|Calculator|VLC|System Preferences|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice)$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+yabai -m rule --add label="Alfred" app="^Alfred$" manage=off
+yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="Software Update" title="Software Update" manage=off
+yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+yabai -m rule --add label="Select file to save to" app="^Inkscape$" title="Select file to save to" manage=off
+yabai -m rule --add label="PDFScroller" manage=off
+yabai -m rule --add label="WezTerm" manage=off
+yabai -m rule --add label="wezterm-gui" manage=off
+
+# signals
+yabai -m signal --add event=window_destroyed action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+yabai -m signal --add event=application_terminated action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse"
+
+echo "yabai configuration loaded.."
+
