@@ -1,8 +1,6 @@
 [[language]]
 name = "c-sharp"
-scope = "source.csharp"
-indent = { tab-width = 4, unit = "\t" }
-language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/omnisharp", args = [ "--languageserver", "--stdio" ] }
+language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/omnisharp", args = [ "--languageserver" ] }
 
 [[language]]
 name = "typescript"
@@ -45,7 +43,6 @@ name = "jsx"
 # language-server = { command = "/home/danruto/.local/share/nvim/mason/bin/typescript-language-server", args = ["--stdio"], language-id = "javascript" }
 language-server = { command = "/home/danruto/.bun/bin/typescript-language-server", args = ["--stdio"], language-id = "javascript"}
 indent = { tab-width = 4, unit = "    " }
-grammar = "javascript"
 
 [[language]]
 name = "css"

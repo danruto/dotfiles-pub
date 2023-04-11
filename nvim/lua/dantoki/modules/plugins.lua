@@ -52,5 +52,5 @@ require("lazy").setup("dantoki.plugins", {
 			},
 		},
 	},
-	install = { colorscheme = { "danger" } },
+	install = { colorscheme = { "tokyonight" } },
 })

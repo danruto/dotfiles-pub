@@ -86,4 +86,24 @@ return {
 		event = "LspAttach",
 		opts = {},
 	},
+	{
+		"SmiteshP/nvim-navic",
+		opts = { highlight = true, lsp = { auto_attach = true } },
+	},
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		event = "LspAttach",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			attach_navic = false,
+			-- create_autocmd = false,
+			show_navic = true,
+		},
+	},
 }

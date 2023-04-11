@@ -1,3 +1,4 @@
+-- TODO: Write an automatic loader for all colorschemes so we can use the telescope picker
 return {
 	{
 		"NLKNguyen/papercolor-theme",
@@ -25,8 +26,8 @@ return {
 	},
 	{
 		"igorgue/danger",
-		lazy = false,
-		priority = 1000,
+		-- lazy = false,
+		-- priority = 1000,
 		opts = {
 			style = "dark",
 			-- alacritty = true,
@@ -52,10 +53,31 @@ return {
 			style = "light",
 		},
 	},
+	-- {
+	-- 	"themercorp/themer.lua",
+	-- 	opts = {
+	-- 		enable_installer = true,
+	-- 	},
+	-- },
 	{
-		"themercorp/themer.lua",
+		"dharmx/nvim-colo",
+		cmd = { "Colo", "ColoTele" },
 		opts = {
-			enable_installer = true,
+			manual = true,
+		},
+		requires = {
+			"nvim-lua/plenary.nvim",
 		},
 	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd [[ colorscheme tokyonight ]]
+		end,
+		opts = {
+			style = "night",
+		}
+	}
 }

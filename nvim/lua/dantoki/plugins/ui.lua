@@ -1,6 +1,6 @@
 return {
 	{
-		"kyazdani42/nvim-web-devicons",
+		"nvim-tree/nvim-web-devicons",
 		opts = {},
 	},
 	{
@@ -95,5 +95,27 @@ return {
 	{
 		"sindrets/winshift.nvim",
 		opts = {},
+	},
+	{
+		"JellyApple102/flote.nvim",
+		cmd = "Floate",
+		opts = {},
+	},
+	{
+		"folke/trouble.nvim",
+		cmd = "Trouble",
+		keys = {
+			{
+				"<Leader>n",
+				function()
+					local ok, t = pcall(require, "trouble")
+					if not ok then
+						return
+					end
+					t.next({ skip_groups = true, jump = true })
+				end,
+				desc = "Jump to next diagnostic",
+			},
+		},
 	},
 }

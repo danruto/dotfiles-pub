@@ -73,8 +73,7 @@ local options = {
 		},
 	},
 	pickers = { colorscheme = { enable_preview = true } },
-
-	extensions_list = { "themes" },
+	extensions_list = { "themes", "colo" },
 }
 
 telescope.setup(options)

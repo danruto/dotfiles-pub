@@ -1,4 +1,4 @@
-theme = "ayu_evolve"
+theme = "ayu_dark"
 
 [editor]
 line-number = "relative"
@@ -16,6 +16,7 @@ select = "underline"
 hidden = false
 
 [editor.lsp]
+display-inlay-hints = true
 display-messages = true
 
 [editor.indent-guides]
@@ -23,7 +24,8 @@ render = true
 
 [editor.statusline]
 left = ["mode", "spinner"]
-center = ["file-name"]
+center = ["file-name", "file-modification-indicator"]
+right = ["version-control", "diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
 
 [keys.normal]
 "{" = ["goto_prev_paragraph", "collapse_selection"]
@@ -37,6 +39,7 @@ V = ["select_mode", "extend_to_line_bounds"]
 # p = "paste_clipboard_after"
 # P = "paste_clipboard_before"
 esc = ["collapse_selection", "keep_primary_selection"]
+K = ["hover"]
 
 [keys.select]
 "{" = ["extend_to_line_bounds", "goto_prev_paragraph"]

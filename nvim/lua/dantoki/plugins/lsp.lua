@@ -16,7 +16,6 @@ return {
 					package_installed = " ",
 					package_uninstalled = " ﮊ",
 				},
-
 				keymaps = {
 					toggle_server_expand = "<CR>",
 					install_server = "i",
@@ -31,7 +30,26 @@ return {
 			max_concurrent_installers = 10,
 		},
 	},
-	"neovim/nvim-lspconfig",
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{
+				"SmiteshP/nvim-navbuddy",
+				-- event = "LspAttach",
+				dependencies = {
+					"neovim/nvim-lspconfig",
+					"SmiteshP/nvim-navic",
+					"MunifTanjim/nui.nvim",
+				},
+				opts = {
+					window = {
+						border = "double",
+					},
+					lsp = { auto_attach = true },
+				},
+			},
+		},
+	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -102,7 +120,7 @@ return {
 					"lua_ls",
 					"pyright",
 					"rust_analyzer",
-					"sqls",
+					"sqlls",
 					"tailwindcss",
 					"tsserver",
 					"vuels",
@@ -152,6 +170,13 @@ return {
 							inlay_hints = { auto = false },
 							executor = require("rust-tools/executors").toggleterm,
 							hover_actions = { border = "solid" },
+						},
+						procMacro = {
+							ignored = {
+								["async-trait"] = { "async_trait" },
+								["napi-derive"] = { "napi" },
+								["async-recursion"] = { "async_recursion" },
+							},
 						},
 						dap = {
 							adapter = {
