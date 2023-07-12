@@ -25,7 +25,7 @@ render = true
 [editor.statusline]
 left = ["mode", "spinner"]
 center = ["file-name", "file-modification-indicator"]
-right = ["version-control", "diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = ["version-control", "diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type", "total-line-numbers"]
 
 [keys.normal]
 "{" = ["goto_prev_paragraph", "collapse_selection"]
