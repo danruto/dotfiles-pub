@@ -1,5 +1,13 @@
--- TODO: Write an automatic loader for all colorschemes so we can use the telescope picker
 return {
+	{
+		"Shatur/neovim-ayu",
+		config = function() end,
+	},
+	{
+		"nocksock/bloop.nvim",
+		dependencies = { "rktjmp/lush.nvim" },
+		config = function() end,
+	},
 	{
 		"NLKNguyen/papercolor-theme",
 		config = function()
@@ -46,13 +54,13 @@ return {
 			},
 		},
 	},
-	{
-		"uloco/bluloco.nvim",
-		dependencies = { "rktjmp/lush.nvim" },
-		opts = {
-			style = "light",
-		},
-	},
+	-- {
+	-- 	"uloco/bluloco.nvim",
+	-- 	dependencies = { "rktjmp/lush.nvim" },
+	-- 	opts = {
+	-- 		style = "light",
+	-- 	},
+	-- },
 	-- {
 	-- 	"themercorp/themer.lua",
 	-- 	opts = {
@@ -61,6 +69,7 @@ return {
 	-- },
 	{
 		"dharmx/nvim-colo",
+		commit = "a401cad1762b458332d563484c05eb149bfa7a48",
 		cmd = { "Colo", "ColoTele" },
 		opts = {
 			manual = true,
@@ -74,10 +83,77 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd [[ colorscheme tokyonight ]]
+			vim.cmd([[ colorscheme tokyonight-night ]])
 		end,
 		opts = {
 			style = "night",
-		}
-	}
+		},
+	},
+	{ "Alexis12119/nightly.nvim" },
+	{
+		"AlexvZyl/nordic.nvim",
+		-- lazy = false,
+		-- priority = 800,
+		config = function()
+			local p = require("nordic.colors")
+			local override = {
+				PopupNormal = {
+					bg = p.bg_dark,
+				},
+				PopupBorder = {
+					bg = p.bg_dark,
+					fg = p.grey1,
+				},
+				Pmenu = {
+					link = "PopupNormal",
+				},
+				PmenuSel = {
+					bg = p.grey0,
+					bold = true,
+				},
+				PmenuBorder = {
+					link = "PopupBorder",
+				},
+				PmenuDocBorder = {
+					bg = p.bg_dark,
+					fg = p.grey1,
+				},
+				NormalFloat = {
+					bg = p.bg_dark,
+				},
+				FloatBorder = {
+					bg = p.bg_dark,
+				},
+				NoiceCmdlineIcon = {
+					bg = p.bg_dark,
+				},
+				NoiceCmdlinePopupBorder = {
+					fg = p.cyan.base,
+				},
+				SagaBorder = {
+					bg = p.bg_dark,
+					fg = p.grey1,
+				},
+				SagaNormal = {
+					bg = p.bg_dark,
+				},
+			}
+			require("nordic").load({
+				theme = "nordic",
+				bold_keywords = true,
+				override = override,
+			})
+		end,
+	},
+	{
+		"echasnovski/mini.hues",
+		version = false,
+		-- lazy = false,
+		-- priority = 1000,
+		opts = {
+			background = "#0a0e14",
+			foreground = "#73d0ff",
+			saturation = "high",
+		},
+	},
 }

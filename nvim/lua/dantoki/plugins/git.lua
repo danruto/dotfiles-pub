@@ -13,7 +13,7 @@ return {
 		},
 	},
 	{
-		"TimUntersberger/neogit",
+		"NeoGitOrg/neogit",
 		keys = {
 			{ "<Space>gs", "<cmd>Neogit<cr>", desc = "Neogit" },
 		},

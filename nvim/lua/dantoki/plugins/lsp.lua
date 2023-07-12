@@ -134,36 +134,36 @@ return {
 				function(server_name)
 					lspconfig[server_name].setup({})
 				end,
-				["tsserver"] = function()
-					require("typescript").setup({
-						server = {
-							settings = {
-								typescript = {
-									inlayHints = {
-										includeInlayParameterNameHints = "all",
-										includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-										includeInlayFunctionParameterTypeHints = true,
-										includeInlayVariableTypeHints = true,
-										includeInlayPropertyDeclarationTypeHints = true,
-										includeInlayFunctionLikeReturnTypeHints = true,
-										includeInlayEnumMemberValueHints = true,
-									},
-								},
-								javascript = {
-									inlayHints = {
-										includeInlayParameterNameHints = "all",
-										includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-										includeInlayFunctionParameterTypeHints = true,
-										includeInlayVariableTypeHints = true,
-										includeInlayPropertyDeclarationTypeHints = true,
-										includeInlayFunctionLikeReturnTypeHints = true,
-										includeInlayEnumMemberValueHints = true,
-									},
-								},
-							},
-						},
-					})
-				end,
+				-- ["tsserver"] = function()
+				-- 	require("typescript").setup({
+				-- 		server = {
+				-- 			settings = {
+				-- 				typescript = {
+				-- 					inlayHints = {
+				-- 						includeInlayParameterNameHints = "all",
+				-- 						includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				-- 						includeInlayFunctionParameterTypeHints = true,
+				-- 						includeInlayVariableTypeHints = true,
+				-- 						includeInlayPropertyDeclarationTypeHints = true,
+				-- 						includeInlayFunctionLikeReturnTypeHints = true,
+				-- 						includeInlayEnumMemberValueHints = true,
+				-- 					},
+				-- 				},
+				-- 				javascript = {
+				-- 					inlayHints = {
+				-- 						includeInlayParameterNameHints = "all",
+				-- 						includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				-- 						includeInlayFunctionParameterTypeHints = true,
+				-- 						includeInlayVariableTypeHints = true,
+				-- 						includeInlayPropertyDeclarationTypeHints = true,
+				-- 						includeInlayFunctionLikeReturnTypeHints = true,
+				-- 						includeInlayEnumMemberValueHints = true,
+				-- 					},
+				-- 				},
+				-- 			},
+				-- 		},
+				-- 	})
+				-- end,
 				["rust_analyzer"] = function()
 					require("rust-tools").setup({
 						tools = {
@@ -204,6 +204,24 @@ return {
 								vim.keymap.set("n", "<C-Space>", rt.hover_actions.hover_actions, rt_opts)
 								vim.keymap.set("n", "<Leader>ca", rt.code_action_group.code_action_group, rt_opts)
 							end,
+						},
+					})
+				end,
+				["gopls"] = function()
+					lspconfig.gopls.setup({
+						settings = {
+							gopls = {
+								codelenses = { test = true },
+								hints = {
+									assignVariableTypes = true,
+									compositeLiteralFields = true,
+									compositeLiteralTypes = true,
+									constantValues = true,
+									functionTypeParameters = true,
+									parameterNames = true,
+									rangeVariableTypes = true,
+								},
+							},
 						},
 					})
 				end,
@@ -262,9 +280,15 @@ return {
 			require("dantoki.configs.null-ls")
 		end,
 	},
+	-- {
+	-- 	"jose-elias-alvarez/typescript.nvim",
+	-- 	dependencies = "jose-elias-alvarez/null-ls.nvim",
+	-- },
 	{
-		"jose-elias-alvarez/typescript.nvim",
-		dependencies = "jose-elias-alvarez/null-ls.nvim",
+		"pmizio/typescript-tools.nvim",
+		event = "LspAttach",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
 	},
 	{
 		"simrat39/rust-tools.nvim",

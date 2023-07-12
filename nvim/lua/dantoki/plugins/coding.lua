@@ -5,6 +5,7 @@ return {
 	"AndrewRadev/tagalong.vim",
 	{
 		"nvim-treesitter/nvim-treesitter",
+		version = false,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-refactor",
 			"RRethy/nvim-treesitter-textsubjects",
@@ -19,7 +20,9 @@ return {
 			"TSEnable",
 			"TSDisable",
 			"TSModuleInfo",
+			"TSUpdate",
 		},
+		---@type TSConfig
 		opts = {
 			ensure_installed = {
 				"bash",
@@ -33,7 +36,6 @@ return {
 				"gitignore",
 				"go",
 				"graphql",
-				"help",
 				"html",
 				"http",
 				-- "java",
@@ -72,7 +74,23 @@ return {
 				enable = true,
 				use_languagetree = true,
 			},
+			auto_install = true,
 		},
+		---@param opts TSConfig
+		config = function(_, opts)
+			if type(opts.ensure_installed) == "table" then
+				---@type table<string, boolean>
+				local added = {}
+				opts.ensure_installed = vim.tbl_filter(function(lang)
+					if added[lang] then
+						return false
+					end
+					added[lang] = true
+					return true
+				end, opts.ensure_installed)
+			end
+			require("nvim-treesitter.configs").setup(opts)
+		end,
 	},
 	{
 		"ggandor/flit.nvim",
@@ -84,6 +102,7 @@ return {
 		"echasnovski/mini.nvim",
 		config = function()
 			-- require("mini.ai").setup()
+			-- require("mini.animate").setup()
 			require("mini.bracketed").setup()
 			require("mini.comment").setup()
 			require("mini.cursorword").setup()
